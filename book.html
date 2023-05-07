@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book a Room at Xyruz Hostel</title>
+  </head>
+  <body>
+    <h1>Book a Room at Xyruz Hostel</h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <form method="POST">
+      {{ form.csrf_token }}
+      <p>
+        {{ form.name.label }}<br>
+        {{ form.name() }}<br>
+        {% for error in form.name.errors %}
+          <span style="color: red;">{{ error }}</span><br>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.email.label }}<br>
+        {{ form.email() }}<br>
+        {% for error in form.email.errors %}
+          <span style="color: red;">{{ error }}</span><br>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.checkin_date.label }}<br>
+        {{ form.checkin_date() }}<br>
+        {% for error in form.checkin_date.errors %}
+          <span style="color: red;">{{ error }}</span><br>
+        {% endfor %}
+      </p>
+      <p>
+        {{ form.checkout_date.label }}<br>
+        {{ form.checkout_date() }}<br>
+        {% for error in form.checkout_date.errors %}
+          <span style="color: red;">
